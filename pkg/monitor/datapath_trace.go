@@ -388,6 +388,7 @@ type TraceNotifyVerbose struct {
 	SrcLabel identity.NumericIdentity `json:"srcLabel"`
 	DstLabel identity.NumericIdentity `json:"dstLabel"`
 	DstID    uint16                   `json:"dstID"`
+	OrigIP   string                   `json:"origIP,omitempty"`
 
 	Summary *DissectSummary `json:"summary,omitempty"`
 }
@@ -407,5 +408,6 @@ func TraceNotifyToVerbose(n *TraceNotify, linkMonitor getters.LinkGetter) TraceN
 		SrcLabel:         n.SrcLabel,
 		DstLabel:         n.DstLabel,
 		DstID:            n.DstID,
+		OrigIP:           n.OriginalIP().String(),
 	}
 }
